@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My classes | MUBS Student Management System</title>
+    <meta name="description" content="Class lists and student progress.">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8' },
+                        gold: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' },
+                        navy: { 800: '#102a63', 900: '#0b1f4d' },
+                    },
+                    fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased">
+    <!-- Start: Header -->
+    <header class="fixed top-0 z-50 w-full bg-white border-b border-slate-200">
+        <div class="px-3 py-2 lg:px-5">
+            <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center">
+                    <button type="button" data-sidebar-open class="inline-flex items-center p-2 text-slate-500 rounded-lg lg:hidden hover:bg-slate-100">
+                        <span class="sr-only">Open sidebar</span><i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                    <a href="../lecturer/dashboard.html" class="flex items-center ms-2 md:me-8">
+                        <img src="../assets/img/logo.png" alt="MUBS" class="h-10 w-10 me-3">
+                        <div class="flex flex-col">
+                            <span class="font-semibold text-slate-900 text-sm sm:text-base leading-tight"><span class="sm:hidden">MUBS SMS</span><span class="hidden sm:inline">Student Management System</span></span>
+                            <span class="hidden sm:block text-xs text-slate-500">Makerere University Business School</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="hidden md:flex flex-1 max-w-md relative">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-3"></i>
+                    <input type="search" placeholder="Search students, courses, results…" class="w-full pl-10 pr-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-[#2563eb] focus:bg-white">
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="hidden xl:inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-amber-50 text-[#b45309] border border-amber-100"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> Semester I · 2026/27</span>
+                    <!-- Start: Header notifications -->
+                    <details class="menu-dropdown relative">
+                        <summary class="p-2 text-slate-500 rounded-lg hover:text-slate-900 hover:bg-slate-100 cursor-pointer relative list-none">
+                            <i data-lucide="bell" class="w-5 h-5"></i>
+                            <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-[#d97706] rounded-full"></span>
+                        </summary>
+                        <div class="absolute right-0 mt-2 w-80 bg-white border border-slate-200 rounded-xl shadow-lg z-50 overflow-hidden">
+                            <div class="px-4 py-2.5 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+                                <p class="text-sm font-medium">Notifications</p>
+                                <a href="#" class="text-xs text-[#2563eb]">View all</a>
+                            </div>
+                            <a href="../lecturer/marks.html" class="block px-4 py-3 hover:bg-slate-50 border-b border-slate-100 last:border-0">
+                                <p class="text-sm font-medium">Marks deadline</p>
+                                <p class="text-xs text-slate-500 mt-1">BIT 2104 marks due on Friday 6 Nov. · 3 hrs ago</p>
+                            </a><a href="../lecturer/classes.html" class="block px-4 py-3 hover:bg-slate-50 border-b border-slate-100 last:border-0">
+                                <p class="text-sm font-medium">Room change</p>
+                                <p class="text-xs text-slate-500 mt-1">Database Systems moved to Main Hall 2. · Yesterday</p>
+                            </a>
+                        </div>
+                    </details>
+                    <!-- End: Header notifications -->
+                    <!-- Start: Header user menu -->
+                    <details class="menu-dropdown relative">
+                        <summary class="flex items-center gap-2 bg-slate-50 rounded-lg p-1 text-sm border border-slate-200 hover:bg-slate-100 cursor-pointer list-none">
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-[#2563eb] border border-blue-100 text-xs font-semibold">PM</div>
+                            <div class="hidden md:block text-left mr-1">
+                                <div class="text-xs font-medium text-slate-900">Dr. Peter Muwanga</div>
+                                <div class="text-[10px] text-slate-500">Lecturer</div>
+                            </div>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400"></i>
+                        </summary>
+                        <div class="absolute right-0 mt-2 w-60 bg-white border border-slate-200 rounded-xl shadow-lg z-50 overflow-hidden">
+                            <div class="px-4 py-3 border-b border-slate-200 bg-slate-50">
+                                <p class="text-sm font-medium">Dr. Peter Muwanga</p>
+                                <p class="text-xs text-slate-500 truncate">pmuwanga@mubs.ac.ug</p>
+                            </div>
+                            <a href="../lecturer/dashboard.html" class="flex items-center px-4 py-2 text-sm text-slate-600 hover:bg-slate-50"><i data-lucide="user" class="w-4 h-4 mr-2"></i>My profile</a>
+                            <a href="../login.html" class="flex items-center px-4 py-2 text-sm text-slate-600 hover:bg-slate-50"><i data-lucide="repeat" class="w-4 h-4 mr-2"></i>Switch portal</a>
+                            <a href="../login.html" class="flex items-center px-4 py-2 text-sm text-[#d97706] hover:bg-slate-50 border-t border-slate-200"><i data-lucide="log-out" class="w-4 h-4 mr-2"></i>Sign out</a>
+                        </div>
+                    </details>
+                    <!-- End: Header user menu -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End: Header -->
+
+    <!-- Start: Sidebar -->
+    <div id="sidebar-overlay" class="hidden fixed inset-0 z-30 bg-slate-900/40 lg:hidden"></div>
+    <aside id="sidebar" class="sidebar-dark fixed top-0 left-0 z-40 w-64 h-screen pt-[60px] -translate-x-full lg:translate-x-0 transition-transform flex flex-col">
+        <div class="flex-1 px-3 py-5 overflow-y-auto sidebar-scrollbar">
+            <div class="space-y-1 mb-5"><p class="px-3 text-[11px] font-semibold text-blue-200/50 uppercase tracking-wider mb-2">Main</p><a href="../lecturer/dashboard.html" class="border-l-3 border-transparent text-blue-100/75 hover:bg-white/5 hover:text-white flex items-center p-2 pl-3 rounded-lg group text-sm transition-all duration-200"><i data-lucide="layout-dashboard" class="w-5 h-5 transition-colors text-blue-200/60 group-hover:text-[#fbbf24]"></i><span class="ms-3 font-medium">Dashboard</span></a><a href="../lecturer/classes.html" class="border-l-3 border-[#f59e0b] bg-white/10 text-white flex items-center p-2 pl-3 rounded-lg group text-sm transition-all duration-200"><i data-lucide="users" class="w-5 h-5 transition-colors text-[#fbbf24]"></i><span class="ms-3 font-medium">My classes</span></a></div><div class="space-y-1 mb-5"><p class="px-3 text-[11px] font-semibold text-blue-200/50 uppercase tracking-wider mb-2">Teaching</p><a href="../lecturer/attendance.html" class="border-l-3 border-transparent text-blue-100/75 hover:bg-white/5 hover:text-white flex items-center p-2 pl-3 rounded-lg group text-sm transition-all duration-200"><i data-lucide="clipboard-check" class="w-5 h-5 transition-colors text-blue-200/60 group-hover:text-[#fbbf24]"></i><span class="ms-3 font-medium">Take attendance</span></a><a href="../lecturer/marks.html" class="border-l-3 border-transparent text-blue-100/75 hover:bg-white/5 hover:text-white flex items-center p-2 pl-3 rounded-lg group text-sm transition-all duration-200"><i data-lucide="file-pen-line" class="w-5 h-5 transition-colors text-blue-200/60 group-hover:text-[#fbbf24]"></i><span class="ms-3 font-medium">Enter marks</span></a></div>
+        </div>
+        <!-- Start: Sidebar user card -->
+        <div class="mt-auto border-t border-white/10 p-4">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="relative">
+                    <div class="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-sm font-semibold text-white">PM</div>
+                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 border-2 border-[#102a63] rounded-full"></div>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-white truncate">Dr. Peter Muwanga</p>
+                    <p class="text-xs text-blue-200/70 truncate">Faculty of Computing</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 px-3 py-2 bg-white/5 rounded-lg border border-white/10">
+                <i data-lucide="presentation" class="w-4 h-4 text-[#fbbf24]"></i>
+                <span class="text-xs font-semibold text-white uppercase tracking-wide">Lecturer</span>
+            </div>
+        </div>
+        <!-- End: Sidebar user card -->
+    </aside>
+    <!-- End: Sidebar -->
+
+    <!-- Start: Main content -->
+    <div class="pt-[60px] lg:pl-64 min-h-screen flex flex-col">
+        <main class="flex-1 pb-8 px-4 sm:px-8 lg:px-10 pt-6 animate-fade-in">
+<!-- Start: Page heading -->
+            <div class="mb-6 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                <div><h1 class="text-2xl font-bold text-slate-900">My classes</h1><p class="text-slate-500 mt-1">Class lists for Semester I 2026/27</p></div>
+                
+            </div>
+            <!-- End: Page heading -->
+            <div class="grid md:grid-cols-3 gap-4 mb-6"><div class="bg-white border border-slate-200 rounded-xl shadow-sm p-5 flex flex-col">
+                    <div class="flex items-start justify-between mb-3"><div><p class="text-xs font-semibold text-[#d97706]">BIT 2104</p><p class="font-semibold mt-0.5">Database Systems</p></div><span class="text-xs px-2 py-1 rounded-full bg-blue-50 text-[#2563eb] whitespace-nowrap">BIT Year 2</span></div>
+                    <div class="space-y-1.5 text-sm text-slate-500 flex-1">
+                        <p class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4"></i> 48 students</p>
+                        <p class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4"></i> Mon & Wed · 08:00</p>
+                        <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> ICT Lab 1</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mt-5">
+                        <a href="../lecturer/attendance.html" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-slate-200 bg-white rounded-xl text-sm font-medium text-slate-700 hover:border-[#2563eb]/40 hover:text-slate-900 !py-2"><i data-lucide="clipboard-check" class="w-4 h-4"></i> Register</a>
+                        <a href="../lecturer/marks.html" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#2563eb] rounded-xl text-sm font-medium text-white hover:bg-[#1d4ed8] !py-2"><i data-lucide="file-pen-line" class="w-4 h-4"></i> Marks</a>
+                    </div>
+                </div><div class="bg-white border border-slate-200 rounded-xl shadow-sm p-5 flex flex-col">
+                    <div class="flex items-start justify-between mb-3"><div><p class="text-xs font-semibold text-[#d97706]">BIT 3107</p><p class="font-semibold mt-0.5">Web Application Development</p></div><span class="text-xs px-2 py-1 rounded-full bg-blue-50 text-[#2563eb] whitespace-nowrap">BIT Year 3</span></div>
+                    <div class="space-y-1.5 text-sm text-slate-500 flex-1">
+                        <p class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4"></i> 36 students</p>
+                        <p class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4"></i> Tue · 11:00</p>
+                        <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> ICT Lab 2</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mt-5">
+                        <a href="../lecturer/attendance.html" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-slate-200 bg-white rounded-xl text-sm font-medium text-slate-700 hover:border-[#2563eb]/40 hover:text-slate-900 !py-2"><i data-lucide="clipboard-check" class="w-4 h-4"></i> Register</a>
+                        <a href="../lecturer/marks.html" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#2563eb] rounded-xl text-sm font-medium text-white hover:bg-[#1d4ed8] !py-2"><i data-lucide="file-pen-line" class="w-4 h-4"></i> Marks</a>
+                    </div>
+                </div><div class="bg-white border border-slate-200 rounded-xl shadow-sm p-5 flex flex-col">
+                    <div class="flex items-start justify-between mb-3"><div><p class="text-xs font-semibold text-[#d97706]">BBA 3110</p><p class="font-semibold mt-0.5">Business Research Methods</p></div><span class="text-xs px-2 py-1 rounded-full bg-blue-50 text-[#2563eb] whitespace-nowrap">BBA Year 3</span></div>
+                    <div class="space-y-1.5 text-sm text-slate-500 flex-1">
+                        <p class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4"></i> 112 students</p>
+                        <p class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4"></i> Wed & Fri · 14:00</p>
+                        <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> Main Hall 1</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mt-5">
+                        <a href="../lecturer/attendance.html" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-slate-200 bg-white rounded-xl text-sm font-medium text-slate-700 hover:border-[#2563eb]/40 hover:text-slate-900 !py-2"><i data-lucide="clipboard-check" class="w-4 h-4"></i> Register</a>
+                        <a href="../lecturer/marks.html" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#2563eb] rounded-xl text-sm font-medium text-white hover:bg-[#1d4ed8] !py-2"><i data-lucide="file-pen-line" class="w-4 h-4"></i> Marks</a>
+                    </div>
+                </div></div>
+            <div class="bg-white border border-slate-200 rounded-xl shadow-sm p-4 mb-4 grid sm:grid-cols-3 gap-3">
+                <div class="sm:col-span-2 relative"><i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-3.5"></i><input type="search" data-table-search="roster" placeholder="Search a student by name or reg. number" class="input-field pl-10"></div>
+                <select data-table-filter="roster" data-col="5" class="input-field"><option value="">All students</option><option>On track</option><option>At risk</option></select>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-x-auto">
+                <table id="roster" class="w-full min-w-[680px]"><thead class="bg-slate-50 border-b border-slate-200"><tr><th class="py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Reg. No</th><th class="py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Student</th><th class="py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Class</th><th class="py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-slate-500 text-center">Attendance</th><th class="py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-slate-500 text-center">CA</th><th class="py-3 px-4 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Status</th></tr></thead><tbody><tr class="border-b border-slate-100 hover:bg-slate-50"><td class="py-3 px-4 text-sm text-slate-500">24/U/0108</td><td class="py-3 px-4 text-sm font-medium">Doreen Atim</td><td class="py-3 px-4 text-sm">BIT 2104</td><td class="py-3 px-4 text-sm text-center">79%</td><td class="py-3 px-4 text-sm text-center">27/30</td><td class="py-3 px-4 text-sm"><span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700 whitespace-nowrap">On track</span></td></tr><tr class="border-b border-slate-100 hover:bg-slate-50"><td class="py-3 px-4 text-sm text-slate-500">25/U/0063</td><td class="py-3 px-4 text-sm font-medium">Daniel Kato</td><td class="py-3 px-4 text-sm">BIT 2104</td><td class="py-3 px-4 text-sm text-center">74%</td><td class="py-3 px-4 text-sm text-center">22/30</td><td class="py-3 px-4 text-sm"><span class="text-xs px-2 py-1 rounded-full bg-red-50 text-red-600 whitespace-nowrap">At risk</span></td></tr><tr class="border-b border-slate-100 hover:bg-slate-50"><td class="py-3 px-4 text-sm text-slate-500">24/U/0390</td><td class="py-3 px-4 text-sm font-medium">Moses Tumwine</td><td class="py-3 px-4 text-sm">BIT 2104</td><td class="py-3 px-4 text-sm text-center">76%</td><td class="py-3 px-4 text-sm text-center">18/30</td><td class="py-3 px-4 text-sm"><span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700 whitespace-nowrap">On track</span></td></tr><tr class="border-b border-slate-100 hover:bg-slate-50"><td class="py-3 px-4 text-sm text-slate-500">24/U/0244</td><td class="py-3 px-4 text-sm font-medium">Sharon Nakato</td><td class="py-3 px-4 text-sm">BIT 2104</td><td class="py-3 px-4 text-sm text-center">95%</td><td class="py-3 px-4 text-sm text-center">25/30</td><td class="py-3 px-4 text-sm"><span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700 whitespace-nowrap">On track</span></td></tr><tr class="border-b border-slate-100 hover:bg-slate-50"><td class="py-3 px-4 text-sm text-slate-500">24/U/0151</td><td class="py-3 px-4 text-sm font-medium">Allan Byaruhanga</td><td class="py-3 px-4 text-sm">BIT 2104</td><td class="py-3 px-4 text-sm text-center">90%</td><td class="py-3 px-4 text-sm text-center">20/30</td><td class="py-3 px-4 text-sm"><span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700 whitespace-nowrap">On track</span></td></tr><tr class="border-b border-slate-100 hover:bg-slate-50"><td class="py-3 px-4 text-sm text-slate-500">24/U/0172</td><td class="py-3 px-4 text-sm font-medium">Esther Nabirye</td><td class="py-3 px-4 text-sm">BIT 2104</td><td class="py-3 px-4 text-sm text-center">93%</td><td class="py-3 px-4 text-sm text-center">29/30</td><td class="py-3 px-4 text-sm"><span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700 whitespace-nowrap">On track</span></td></tr><tr class="border-b border-slate-100 hover:bg-slate-50"><td class="py-3 px-4 text-sm text-slate-500">24/U/0203</td><td class="py-3 px-4 text-sm font-medium">Ronald Opio</td><td class="py-3 px-4 text-sm">BIT 2104</td><td class="py-3 px-4 text-sm text-center">58%</td><td class="py-3 px-4 text-sm text-center">15/30</td><td class="py-3 px-4 text-sm"><span class="text-xs px-2 py-1 rounded-full bg-red-50 text-red-600 whitespace-nowrap">At risk</span></td></tr><tr class="border-b border-slate-100 hover:bg-slate-50"><td class="py-3 px-4 text-sm text-slate-500">24/U/0219</td><td class="py-3 px-4 text-sm font-medium">Faith Nansubuga</td><td class="py-3 px-4 text-sm">BIT 2104</td><td class="py-3 px-4 text-sm text-center">88%</td><td class="py-3 px-4 text-sm text-center">24/30</td><td class="py-3 px-4 text-sm"><span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700 whitespace-nowrap">On track</span></td></tr></tbody></table>
+                <p data-table-empty="roster" class="hidden p-8 text-center text-sm text-slate-500">No students match your search.</p>
+            </div>
+        </main>
+        <!-- Start: Footer -->
+        <footer class="px-4 sm:px-8 lg:px-10 py-4 border-t border-slate-200 bg-white text-xs text-slate-500 flex flex-col sm:flex-row justify-between gap-2">
+            <p>© <span data-year>2026</span> MUBS Student Management System</p>
+            <p>Academic Registrar's Office · Nakawa, Kampala</p>
+        </footer>
+        <!-- End: Footer -->
+    </div>
+    <!-- End: Main content -->
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>

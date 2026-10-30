@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register student | MUBS Student Management System</title>
+    <meta name="description" content="Add a new student to the register.">
+    <link rel="icon" type="image/png" href="../../assets/img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8' },
+                        gold: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' },
+                        navy: { 800: '#102a63', 900: '#0b1f4d' },
+                    },
+                    fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased">
+    <!-- Start: Header -->
+    <header class="fixed top-0 z-50 w-full bg-white border-b border-slate-200">
+        <div class="px-3 py-2 lg:px-5">
+            <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center">
+                    <button type="button" data-sidebar-open class="inline-flex items-center p-2 text-slate-500 rounded-lg lg:hidden hover:bg-slate-100">
+                        <span class="sr-only">Open sidebar</span><i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                    <a href="../../admin/dashboard.html" class="flex items-center ms-2 md:me-8">
+                        <img src="../../assets/img/logo.png" alt="MUBS" class="h-10 w-10 me-3">
+                        <div class="flex flex-col">
+                            <span class="font-semibold text-slate-900 text-sm sm:text-base leading-tight"><span class="sm:hidden">MUBS SMS</span><span class="hidden sm:inline">Student Management System</span></span>
+                            <span class="hidden sm:block text-xs text-slate-500">Makerere University Business School</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="hidden md:flex flex-1 max-w-md relative">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-3"></i>
+                    <input type="search" placeholder="Search students, courses, results…" class="w-full pl-10 pr-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-[#2563eb] focus:bg-white">
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="hidden xl:inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-amber-50 text-[#b45309] border border-amber-100"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> Semester I · 2026/27</span>
+                    <!-- Start: Header notifications -->
+                    <details class="menu-dropdown relative">
+                        <summary class="p-2 text-slate-500 rounded-lg hover:text-slate-900 hover:bg-slate-100 cursor-pointer relative list-none">
+                            <i data-lucide="bell" class="w-5 h-5"></i>
+                            <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-[#d97706] rounded-full"></span>
+                        </summary>
+                        <div class="absolute right-0 mt-2 w-80 bg-white border border-slate-200 rounded-xl shadow-lg z-50 overflow-hidden">
+                            <div class="px-4 py-2.5 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+                                <p class="text-sm font-medium">Notifications</p>
+                                <a href="#" class="text-xs text-[#2563eb]">View all</a>
+                            </div>
+                            <a href="../../admin/reports.html" class="block px-4 py-3 hover:bg-slate-50 border-b border-slate-100 last:border-0">
+                                <p class="text-sm font-medium">Marks submitted</p>
+                                <p class="text-xs text-slate-500 mt-1">Dr. Muwanga submitted BIT 2104 marks. · 40 min ago</p>
+                            </a><a href="../../admin/students/index.html" class="block px-4 py-3 hover:bg-slate-50 border-b border-slate-100 last:border-0">
+                                <p class="text-sm font-medium">New registrations</p>
+                                <p class="text-xs text-slate-500 mt-1">12 first-year students registered today. · 2 hrs ago</p>
+                            </a>
+                        </div>
+                    </details>
+                    <!-- End: Header notifications -->
+                    <!-- Start: Header user menu -->
+                    <details class="menu-dropdown relative">
+                        <summary class="flex items-center gap-2 bg-slate-50 rounded-lg p-1 text-sm border border-slate-200 hover:bg-slate-100 cursor-pointer list-none">
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-[#2563eb] border border-blue-100 text-xs font-semibold">SN</div>
+                            <div class="hidden md:block text-left mr-1">
+                                <div class="text-xs font-medium text-slate-900">Sarah Nambi</div>
+                                <div class="text-[10px] text-slate-500">Registry</div>
+                            </div>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400"></i>
+                        </summary>
+                        <div class="absolute right-0 mt-2 w-60 bg-white border border-slate-200 rounded-xl shadow-lg z-50 overflow-hidden">
+                            <div class="px-4 py-3 border-b border-slate-200 bg-slate-50">
+                                <p class="text-sm font-medium">Sarah Nambi</p>
+                                <p class="text-xs text-slate-500 truncate">registrar@mubs.ac.ug</p>
+                            </div>
+                            <a href="../../admin/dashboard.html" class="flex items-center px-4 py-2 text-sm text-slate-600 hover:bg-slate-50"><i data-lucide="user" class="w-4 h-4 mr-2"></i>My profile</a>
+                            <a href="../../login.html" class="flex items-center px-4 py-2 text-sm text-slate-600 hover:bg-slate-50"><i data-lucide="repeat" class="w-4 h-4 mr-2"></i>Switch portal</a>
+                            <a href="../../login.html" class="flex items-center px-4 py-2 text-sm text-[#d97706] hover:bg-slate-50 border-t border-slate-200"><i data-lucide="log-out" class="w-4 h-4 mr-2"></i>Sign out</a>
+                        </div>
+                    </details>
+                    <!-- End: Header user menu -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End: Header -->
+
+    <!-- Start: Sidebar -->
+    <div id="sidebar-overlay" class="hidden fixed inset-0 z-30 bg-slate-900/40 lg:hidden"></div>
+    <aside id="sidebar" class="sidebar-dark fixed top-0 left-0 z-40 w-64 h-screen pt-[60px] -translate-x-full lg:translate-x-0 transition-transform flex flex-col">
+        <div class="flex-1 px-3 py-5 overflow-y-auto sidebar-scrollbar">
+            <div class="space-y-1 mb-5"><p class="px-3 text-[11px] font-semibold text-blue-200/50 uppercase tracking-wider mb-2">Main</p><a href="../../admin/dashboard.html" class="border-l-3 border-transparent text-blue-100/75 hover:bg-white/5 hover:text-white flex items-center p-2 pl-3 rounded-lg group text-sm transition-all duration-200"><i data-lucide="layout-dashboard" class="w-5 h-5 transition-colors text-blue-200/60 group-hover:text-[#fbbf24]"></i><span class="ms-3 font-medium">Dashboard</span></a></div><div class="space-y-1 mb-5"><p class="px-3 text-[11px] font-semibold text-blue-200/50 uppercase tracking-wider mb-2">Records</p><a href="../../admin/students/index.html" class="border-l-3 border-transparent text-blue-100/75 hover:bg-white/5 hover:text-white flex items-center p-2 pl-3 rounded-lg group text-sm transition-all duration-200"><i data-lucide="graduation-cap" class="w-5 h-5 transition-colors text-blue-200/60 group-hover:text-[#fbbf24]"></i><span class="ms-3 font-medium">Students</span></a><a href="../../admin/students/create.html" class="border-l-3 border-[#f59e0b] bg-white/10 text-white flex items-center p-2 pl-3 rounded-lg group text-sm transition-all duration-200"><i data-lucide="user-plus" class="w-5 h-5 transition-colors text-[#fbbf24]"></i><span class="ms-3 font-medium">Register student</span></a><a href="../../admin/courses.html" class="border-l-3 border-transparent text-blue-100/75 hover:bg-white/5 hover:text-white flex items-center p-2 pl-3 rounded-lg group text-sm transition-all duration-200"><i data-lucide="book-open" class="w-5 h-5 transition-colors text-blue-200/60 group-hover:text-[#fbbf24]"></i><span class="ms-3 font-medium">Courses</span></a><a href="../../admin/lecturers.html" class="border-l-3 border-transparent text-blue-100/75 hover:bg-white/5 hover:text-white flex items-center p-2 pl-3 rounded-lg group text-sm transition-all duration-200"><i data-lucide="presentation" class="w-5 h-5 transition-colors text-blue-200/60 group-hover:text-[#fbbf24]"></i><span class="ms-3 font-medium">Lecturers</span></a></div><div class="space-y-1 mb-5"><p class="px-3 text-[11px] font-semibold text-blue-200/50 uppercase tracking-wider mb-2">Insights</p><a href="../../admin/reports.html" class="border-l-3 border-transparent text-blue-100/75 hover:bg-white/5 hover:text-white flex items-center p-2 pl-3 rounded-lg group text-sm transition-all duration-200"><i data-lucide="bar-chart-3" class="w-5 h-5 transition-colors text-blue-200/60 group-hover:text-[#fbbf24]"></i><span class="ms-3 font-medium">Reports</span></a></div>
+        </div>
+        <!-- Start: Sidebar user card -->
+        <div class="mt-auto border-t border-white/10 p-4">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="relative">
+                    <div class="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-sm font-semibold text-white">SN</div>
+                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 border-2 border-[#102a63] rounded-full"></div>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-white truncate">Sarah Nambi</p>
+                    <p class="text-xs text-blue-200/70 truncate">Academic Registrar</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 px-3 py-2 bg-white/5 rounded-lg border border-white/10">
+                <i data-lucide="shield-check" class="w-4 h-4 text-[#fbbf24]"></i>
+                <span class="text-xs font-semibold text-white uppercase tracking-wide">Registry</span>
+            </div>
+        </div>
+        <!-- End: Sidebar user card -->
+    </aside>
+    <!-- End: Sidebar -->
+
+    <!-- Start: Main content -->
+    <div class="pt-[60px] lg:pl-64 min-h-screen flex flex-col">
+        <main class="flex-1 pb-8 px-4 sm:px-8 lg:px-10 pt-6 animate-fade-in">
+<!-- Start: Page heading -->
+            <div class="mb-6 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                <div><h1 class="text-2xl font-bold text-slate-900">Register a new student</h1><p class="text-slate-500 mt-1">Fields marked * are required. A student email is created from the name.</p></div>
+                <div class="flex flex-wrap gap-2 shrink-0"><a href="index.html" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-slate-200 bg-white rounded-xl text-sm font-medium text-slate-700 hover:border-[#2563eb]/40 hover:text-slate-900"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back</a></div>
+            </div>
+            <!-- End: Page heading -->
+            <form data-student-form="create" novalidate class="space-y-6">
+                <div class="bg-white border border-slate-200 rounded-xl shadow-sm p-6">
+                    <h2 class="font-semibold mb-1">Personal details</h2>
+                    <p class="text-sm text-slate-500 mb-5">As they appear on the admission letter.</p>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div>
+                        <label for="firstName" class="block text-sm font-medium text-slate-600 mb-2">First name <span class="text-red-500">*</span></label>
+                        <input type="text" id="firstName" name="firstName" placeholder="e.g. Aisha" required class="input-field">
+                    </div>
+                        <div>
+                        <label for="lastName" class="block text-sm font-medium text-slate-600 mb-2">Last name <span class="text-red-500">*</span></label>
+                        <input type="text" id="lastName" name="lastName" placeholder="e.g. Namuli" required class="input-field">
+                    </div>
+                        <div>
+                        <label for="gender" class="block text-sm font-medium text-slate-600 mb-2">Gender <span class="text-red-500">*</span></label>
+                        <select id="gender" name="gender" required class="input-field"><option value="">Select…</option><option>Female</option><option>Male</option></select>
+                    </div>
+                        <div>
+                        <label for="dob" class="block text-sm font-medium text-slate-600 mb-2">Date of birth</label>
+                        <input type="date" id="dob" name="dob" placeholder="" class="input-field">
+                    </div>
+                        <div>
+                        <label for="phone" class="block text-sm font-medium text-slate-600 mb-2">Phone <span class="text-red-500">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="07XX XXX XXX" required class="input-field">
+                    </div>
+                        <div>
+                        <label for="email" class="block text-sm font-medium text-slate-600 mb-2">Student email <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="name@students.mubs.ac.ug" required class="input-field">
+                    </div>
+                    </div>
+                    <div class="mt-4"><div>
+                        <label for="address" class="block text-sm font-medium text-slate-600 mb-2">Home address</label>
+                        <input type="text" id="address" name="address" placeholder="District / town" class="input-field">
+                    </div></div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl shadow-sm p-6">
+                    <h2 class="font-semibold mb-1">Academic details</h2>
+                    <p class="text-sm text-slate-500 mb-5">Programme and study year.</p>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div>
+                        <label for="regNo" class="block text-sm font-medium text-slate-600 mb-2">Registration number <span class="text-red-500">*</span></label>
+                        <input type="text" id="regNo" name="regNo" placeholder="26/U/0001" required class="input-field">
+                    </div>
+                        <div class="lg:col-span-2"><div>
+                        <label for="programme" class="block text-sm font-medium text-slate-600 mb-2">Programme <span class="text-red-500">*</span></label>
+                        <select id="programme" name="programme" required class="input-field"><option value="">Select…</option><option>Bachelor of Business Administration</option><option>Bachelor of Commerce</option><option>Bachelor of Science in Accounting</option><option>Bachelor of Information Technology</option><option>Bachelor of Human Resource Management</option></select>
+                    </div></div>
+                        <div>
+                        <label for="year" class="block text-sm font-medium text-slate-600 mb-2">Year of study <span class="text-red-500">*</span></label>
+                        <select id="year" name="year" required class="input-field"><option value="">Select…</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+                    </div>
+                        <div>
+                        <label for="intake" class="block text-sm font-medium text-slate-600 mb-2">Intake <span class="text-red-500">*</span></label>
+                        <select id="intake" name="intake" required class="input-field"><option value="">Select…</option><option>2026/27</option><option>2025/26</option><option>2024/25</option><option>2023/24</option><option>2022/23</option></select>
+                    </div>
+                        <div>
+                        <label for="status" class="block text-sm font-medium text-slate-600 mb-2">Status <span class="text-red-500">*</span></label>
+                        <select id="status" name="status" required class="input-field"><option>Active</option><option>Probation</option><option>Suspended</option><option>Graduated</option></select>
+                    </div>
+                        <div>
+                        <label for="feesBalance" class="block text-sm font-medium text-slate-600 mb-2">Fee balance (UGX)</label>
+                        <input type="number" id="feesBalance" name="feesBalance" placeholder="0" class="input-field">
+                    </div>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl shadow-sm p-6">
+                    <h2 class="font-semibold mb-1">Next of kin</h2>
+                    <p class="text-sm text-slate-500 mb-5">Who we contact in an emergency.</p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                        <label for="guardian" class="block text-sm font-medium text-slate-600 mb-2">Full name</label>
+                        <input type="text" id="guardian" name="guardian" placeholder="Parent or guardian" class="input-field">
+                    </div>
+                        <div>
+                        <label for="guardianPhone" class="block text-sm font-medium text-slate-600 mb-2">Phone</label>
+                        <input type="tel" id="guardianPhone" name="guardianPhone" placeholder="07XX XXX XXX" class="input-field">
+                    </div>
+                    </div>
+                </div>
+                <div class="flex justify-end gap-3">
+                    <a href="index.html" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-slate-200 bg-white rounded-xl text-sm font-medium text-slate-700 hover:border-[#2563eb]/40 hover:text-slate-900">Cancel</a>
+                    <button type="submit" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#2563eb] rounded-xl text-sm font-medium text-white hover:bg-[#1d4ed8]"><i data-lucide="save" class="w-4 h-4"></i> Register student</button>
+                </div>
+            </form>
+        </main>
+        <!-- Start: Footer -->
+        <footer class="px-4 sm:px-8 lg:px-10 py-4 border-t border-slate-200 bg-white text-xs text-slate-500 flex flex-col sm:flex-row justify-between gap-2">
+            <p>© <span data-year>2026</span> MUBS Student Management System</p>
+            <p>Academic Registrar's Office · Nakawa, Kampala</p>
+        </footer>
+        <!-- End: Footer -->
+    </div>
+    <!-- End: Main content -->
+    <script src="../../assets/js/app.js"></script>
+</body>
+</html>
