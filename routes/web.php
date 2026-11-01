@@ -15,7 +15,12 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout'); 
 Route::get('/register', [PageController::class, 'register'])->name('register');
 Route::get('/forgot-password', [PageController::class, 'forgotPassword'])->name('password.request');
-Route::get('/students/{student}/courses', [CourseRegistrationController::class, 'studentCourses'])
-    ->name('students.courses');
-Route::get('/courses/{course}/students', [CourseRegistrationController::class, 'courseStudents'])
-    ->name('courses.students');
+Route::middleware('auth')->group(function () {
+    Route::get('/students/{student}/courses', [CourseRegistrationController::class, 'studentCourses'])
+        ->middleware('permission:view own registrations|manage students')
+        ->name('students.courses');
+
+    Route::get('/courses/{course}/students', [CourseRegistrationController::class, 'courseStudents'])
+        ->middleware('permission:view course students|manage courses')
+        ->name('courses.students');
+});
