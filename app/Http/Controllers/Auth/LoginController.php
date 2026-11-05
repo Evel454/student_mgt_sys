@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -11,7 +13,6 @@ class LoginController extends Controller
     public function showLogin()
     {
         return view('login');
-        
     }
 
     public function login(Request $request)
@@ -23,7 +24,18 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            return redirect('/')->with('success', 'Welcome back!');
+
+            $user = $request->user();
+
+            if ($user->can('manage students')) {
+                $target = '/students';
+            } elseif ($user->can('register for course')) {
+                $target = '/courses';
+            } else {
+                $target = '/';
+            }
+
+            return redirect($target)->with('success', 'Welcome back!');
         }
 
         return back()->withErrors(['email' => 'Invalid email or password.'])->onlyInput('email');

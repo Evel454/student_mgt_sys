@@ -23,7 +23,8 @@
                     <p class="mt-1 text-sm text-slate-500">Choose your portal and use your MUBS email.</p>
                 </div>
                 <!-- Start: Sign in form -->
-                <form data-login data-success-url="{{ route('index') }}" class="space-y-5">
+                <form method="POST" action="{{ route('login') }}" class="space-y-5">
+    @csrf
                     <input type="hidden" name="role" value="{{ in_array(request('role'), ['student', 'lecturer', 'admin'], true) ? request('role') : 'student' }}">
                     <div class="grid grid-cols-3 gap-2">
                         <button type="button" data-role-option="student" class="flex flex-col items-center gap-1 text-xs font-medium px-2 py-3 rounded-xl border {{ request('role', 'student') === 'student' ? 'border-[#2563eb] bg-blue-50 text-[#2563eb]' : 'border-slate-200 text-slate-600' }}"><i data-lucide="graduation-cap" class="w-5 h-5"></i>Student</button>
