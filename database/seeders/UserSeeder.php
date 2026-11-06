@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' => 'Sample Student',
-                'email' => 'student@mubs.ac.ug',
+               'email' => 'student@mubs.ac.ug',
                 'role' => 'student',
             ],
         ];
