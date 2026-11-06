@@ -36,7 +36,7 @@
         }
     </style>
     <main class="app-page max-w-6xl mx-auto px-4 pt-28 pb-16 min-h-screen">
-        @include('layouts.messages')
+        @include('layouts.toast')
         @yield('page')
     </main>
     @include('layouts.footer')

@@ -24,6 +24,7 @@
                 </div>
                 <!-- Start: Sign in form -->
                 <form method="POST" action="{{ route('login') }}" class="space-y-5">
+                    @include('layouts.toast')
     @csrf
                     <input type="hidden" name="role" value="{{ in_array(request('role'), ['student', 'lecturer', 'admin'], true) ? request('role') : 'student' }}">
                     <div class="grid grid-cols-3 gap-2">
