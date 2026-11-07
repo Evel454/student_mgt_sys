@@ -1,9 +1,53 @@
+<style>
+    /* Header background */
+    header.site-header {
+        background-color: #dcfce7 !important;
+        border-bottom: 2px solid #16a34a;
+    }
+
+    /* All buttons: green background, rounded edges */
+    button {
+        background-color: #16a34a !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 9999px !important;
+        padding: 0.5rem 1.25rem !important;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #15803d !important;
+    }
+
+    /* Keep Delete buttons red */
+    button.text-red-600 {
+        background-color: #dc2626 !important;
+    }
+
+    /* Links that look like buttons (Sign in, Apply / Register) */
+    a.btn-green {
+        background-color: #16a34a !important;
+        color: #ffffff !important;
+        border-radius: 9999px !important;
+        font-weight: 600;
+    }
+    a.btn-green:hover {
+        background-color: #15803d !important;
+    }
+
+    /* The mobile menu icon stays plain */
+    button[data-mobile-nav] {
+        background-color: transparent !important;
+        color: #000000 !important;
+        padding: 0.5rem !important;
+    }
+</style>
 @php
     $link = 'whitespace-nowrap text-base font-semibold transition-colors';
     $idle = 'text-black hover:text-[#2563eb]';
     $on   = 'text-[#2563eb]';
 @endphp
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+<<header class="site-header fixed top-0 left-0 right-0 z-50 backdrop-blur border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20 gap-6">
 
