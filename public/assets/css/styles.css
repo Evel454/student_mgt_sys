@@ -134,3 +134,110 @@ select.input-field {
 .bar-fill.red { background: linear-gradient(90deg, #dc2626, #f87171); }
 
 .tt-slot { border-radius: 0.6rem; padding: 0.55rem 0.65rem; font-size: 0.75rem; line-height: 1.25; }
+
+
+
+
+/* ---------- Body text: black ---------- */
+body {
+    color: #000000;
+}
+p, li, td, th, label, span, h1, h2, h3, h4, h5, h6 {
+    color: #000000;
+}
+.text-slate-400:not(footer *),
+.text-slate-500:not(footer *),
+.text-slate-600:not(footer *),
+.text-slate-700:not(footer *),
+.text-slate-900:not(footer *) {
+    color: #000000 !important;
+}
+.app-page {
+    font-size: 1.0625rem;
+}
+.app-page h1,
+.app-page h2,
+.app-page h3,
+.app-page th {
+    font-weight: 800;
+}
+.app-page h1 {
+    font-size: 2rem;
+}
+.app-page .text-sm {
+    font-size: 1rem !important;
+}
+.app-page input,
+.app-page select,
+.app-page textarea {
+    color: #000000;
+    font-size: 1rem;
+    border-radius: 0.75rem;
+}
+
+/* ---------- Header ---------- */
+header.site-header {
+    background-color: #dcfce7 !important;
+    border-bottom: 2px solid #16a34a;
+}
+header.site-header a {
+    font-weight: 600;
+}
+header.site-header .text-black,
+header.site-header p {
+    color: #000000 !important;
+}
+
+/* ---------- Buttons ---------- */
+button,
+a.btn-green {
+    background-color: #16a34a !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 9999px !important;
+    font-weight: 600;
+    cursor: pointer;
+}
+button {
+    padding: 0.5rem 1.25rem !important;
+}
+button:hover,
+a.btn-green:hover {
+    background-color: #15803d !important;
+}
+button.text-red-600 {
+    background-color: #dc2626 !important;
+}
+button[data-mobile-nav] {
+    background-color: transparent !important;
+    color: #000000 !important;
+    padding: 0.5rem !important;
+}
+
+/* ---------- Toast pop-up ---------- */
+.toast-box {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 9999;
+    min-width: 280px;
+    max-width: 380px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff !important;
+}
+.toast-success {
+    background: #16a34a;
+}
+.toast-error {
+    background: #dc2626;
+}
+.toast-close {
+    float: right;
+    cursor: pointer;
+    margin-left: 12px;
+    color: #ffffff !important;
+}
